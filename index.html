@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <title>Scroll Demo</title>
+</head>
+<body>
+    <div class='layout'>
+    <div class="card">
+        <div class="card-body">
+          <h3 class="form_title">Scroll Form</h3>
+          <form onsubmit="submitForm(event)">
+            <div class="form-group mt-2">
+                <label for="firstName">First Name</label>
+                <input name='firstName' class="form-control" id="firstName" type="text" />
+                <span class="validation_error" id="firstNameError"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label for="lastName">Last Name</label>
+                <input name='lastName' class="form-control" id="lastName" type="text" />
+                <span class="validation_error" id="lastNameError"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label for="email">Email</label>
+                <input name='email' class="form-control" id="email" type="email" />
+                <span class="validation_error" id="emailError"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label for="password">Password</label>
+                <input name='password' class="form-control" id="password" type="password" />
+                <span class="validation_error" id="passwordError"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField1">Additional Field 1</label>
+                <input name='additionalField1' class="form-control" id="additionalField1" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField2">Additional Field 2</label>
+                <input name='additionalField2' class="form-control" id="additionalField2" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField3">Additional Field 3</label>
+                <input name='additionalField3' class="form-control" id="additionalField3" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField4">Additional Field 4</label>
+                <input name='additionalField4' class="form-control" id="additionalField4" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField5">Additional Field 5</label>
+                <input name='additionalField5' class="form-control" id="additionalField5" type="text" />
+                <span class="validation_error" id="additionalField5Error"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField6">Additional Field 6</label>
+                <input name='additionalField6' class="form-control" id="additionalField6" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField7">Additional Field 7</label>
+                <input name='additionalField7' class="form-control" id="additionalField7" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField8">Additional Field 8</label>
+                <input name='additionalField8' class="form-control" id="additionalField8" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField9">Additional Field 9</label>
+                <input name='additionalField9' class="form-control" id="additionalField9" type="text" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="additionalField10">Additional Field 10</label>
+                <input name='additionalField10' class="form-control" id="additionalField10" type="text" />
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        function submitForm(event) {
+            event.preventDefault()
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var additionalField5 = document.getElementById('additionalField5').value;
+
+
+            var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            const errors = [];
+
+            if(!firstName){
+                document.getElementById('firstNameError').innerText = 'Required';
+
+                errors.push('firstName');
+            }else{
+                document.getElementById('firstNameError').innerText = '';
+            }
+            if(!lastName){
+                document.getElementById('lastNameError').innerText = 'Required';
+
+                errors.push('lastName');
+            }else{
+                document.getElementById('lastNameError').innerText = '';
+            }
+            if(!email){
+                document.getElementById('emailError').innerText = 'Required';
+
+                errors.push('email');
+            } else {
+                document.getElementById('emailError').innerText = '';
+            }
+            if(!password){
+                document.getElementById('passwordError').innerText = 'Required';
+
+                errors.push('password');
+            } else {
+                document.getElementById('passwordError').innerText = '';
+            }
+            if(!additionalField5){
+                document.getElementById('additionalField5Error').innerText = 'Required';
+
+                errors.push('additionalField5');
+            } else {
+                document.getElementById('additionalField5Error').innerText = '';
+            }
+
+
+            console.log({errors})
+
+            const firstError = errors[0]
+            let el = document.querySelector(`[name="${firstError}"]`);
+
+            if (el) {
+            el.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
